@@ -19,7 +19,7 @@ db.once("open",()=>{
 }); //Log a message when the app connects to database
 //db.subscriber.remove()
 
-/*var subscriber1= new Subscriber({
+var subscriber1= new Subscriber({
     name:"Jon Wexler",
     email: "jon@jonwexler.com"
 }).save().then(
@@ -27,6 +27,7 @@ db.once("open",()=>{
             if (error) console.log(error);
         }
     );
+/*
 var subscriber2= new Subscriber({
     name:"Chef Eggplant",
     email: "eggplant@recipeapp.com"
@@ -63,11 +64,9 @@ app.get("/contact",(req,res)=>{
 });
 app.post("/contact",homeController.postedSignUpForm);
 app.post("/subscribe",subscribersController.saveSubscriber);
-app.get("/subscribers",subscribersController.getAllSubscribers,
-(req,res,next)=>{
-    res.render("subscribers",{subscribers: req.data})
-}
-);
+app.get("/subscribers",subscribersController.getAllSubscribers,(req,res,next)=>{
+    res.render("subscribers",{subscribers:req.data});
+});
 app.use(errorController.pageNotFoundError);
 app.use(errorController.internalServerError);
 
